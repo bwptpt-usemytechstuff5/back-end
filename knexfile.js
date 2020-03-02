@@ -2,7 +2,6 @@
 
 module.exports = {
 	development: {
-		// todo if problems deploying check if postgresql
 		client: 'sqlite3',
 		connection: {
 			filename: './data/techStuff.db3'
