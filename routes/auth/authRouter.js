@@ -11,7 +11,7 @@ router.post('/register', (req, res) => {
 	db
 		.add(owner)
 		.then((saved) => {
-			res.status(201).json(saved);
+			res.status(201).json({ message: `user added`, saved });
 		})
 		.catch((error) => {
 			res.status(500).json(error);
@@ -20,11 +20,13 @@ router.post('/register', (req, res) => {
 
 router.post('/login', (req, res) => {
 	let { username, password } = req.body;
+	console.log(username, password);
 
 	db
 		.findBy({ username })
 		.first()
 		.then((owner) => {
+			console.log(owner);
 			if (owner && bcrypt.compareSync(password, owner.password)) {
 				res.status(200).json({ message: `Welcome ${owner.username}!` });
 			} else {
