@@ -5,6 +5,7 @@ const db = knex(configureOptions);
 module.exports = {
 	find,
 	findById,
+	findBy,
 	insert,
 	update,
 	remove
@@ -16,6 +17,10 @@ function find() {
 
 function findById(id) {
 	return db('product').where({ id }).first();
+}
+
+function findBy(filter) {
+	return db('users').select('id', 'username', 'password').where(filter);
 }
 
 function insert(newProduct) {
