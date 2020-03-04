@@ -6,8 +6,7 @@ const restricted = require('../auth/restricted-middleware.js');
 
 const middleware = require('./middleware.js');
 
-// restricted
-router.get('/', (req, res) => {
+router.get('/', restricted, (req, res) => {
 	db
 		.find()
 		.then((products) => {
@@ -65,6 +64,7 @@ router.delete('/:id', middleware.validateProductId, (req, res) => {
 			res.status(200).json({ message: `product removed ${removed}` });
 		})
 		.catch((err) => {
+			console.log(err);
 			res.status(500).json({ error: 'could not remove product', err });
 		});
 });
