@@ -5,6 +5,7 @@ const router = express.Router();
 const restricted = require('../auth/restricted-middleware.js');
 
 const middleware = require('./middleware.js');
+
 // restricted
 router.get('/', (req, res) => {
 	db
@@ -50,7 +51,7 @@ router.put('/:id', middleware.validateBody, middleware.validateProductId, (req, 
 	db
 		.update(id, changes)
 		.then((record) => {
-			res.status(200).json({ message: `record updated ${record}` });
+			res.status(200).json({ message: `product updated ${record}` });
 		})
 		.catch((err) => {
 			res.status(500).json({ error: 'error updating record' });
