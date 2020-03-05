@@ -21,7 +21,6 @@ module.exports = function restricted(req, res, next) {
 				console.log(error);
 				res.status(500).json(error);
 			});
-	} else {
 		res.status(400).json({ message: 'please provide credentials' });
 	}
 };

@@ -13,7 +13,9 @@ router.post('/register', (req, res) => {
 	db
 		.add(owner)
 		.then((saved) => {
-			res.status(201).json({ message: `user added`, saved });
+			// ! added token here check if works line 18
+			const token = jwt.generateToken(owner);
+			res.status(201).json({ message: `user added`, saved, token });
 		})
 		.catch((error) => {
 			res.status(500).json(error);
