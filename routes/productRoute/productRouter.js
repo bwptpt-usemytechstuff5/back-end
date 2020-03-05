@@ -2,11 +2,12 @@ const express = require('express');
 const db = require('./productModel.js');
 const router = express.Router();
 
-const restricted = require('../auth/restricted-middleware.js');
+// const restricted = require('../auth/restricted-middleware.js');
 
 const middleware = require('./middleware.js');
 
-router.get('/', restricted, (req, res) => {
+//restricted
+router.get('/', (req, res) => {
 	db
 		.find()
 		.then((products) => {
